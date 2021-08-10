@@ -28,6 +28,11 @@ const BadInvestmentAdvice = (() => {
     return array;
   }
 
+  /* getRandomElement(array): Returns a random element of array */
+  const _getRandomElement = (array) => {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   return {
 
   }
