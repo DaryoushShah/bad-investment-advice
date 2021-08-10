@@ -48,12 +48,12 @@ const BadInvestmentAdvice = (() => {
         /* Check to see if component has sub-values */
         if(value.indexOf('.') !== -1){
           return {
-            component: value.slice(0, value.indexOf('.')),
+            key: value.slice(0, value.indexOf('.')),
             value: value.slice(value.indexOf('.') + 1)
           }
         }else{
           return {
-            component: value
+            key: value
           }
         }
       }
