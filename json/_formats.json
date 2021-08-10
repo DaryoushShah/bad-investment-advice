@@ -1,0 +1,6 @@
+{
+  "0": {
+    "name": "informational",
+    "format": ["Have you heard of ", "{{company.title}}", "? You can see it's current price with the ticker symbol $", "{{company.ticker}}", "."]
+  }
+}

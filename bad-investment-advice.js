@@ -2,6 +2,10 @@ const fs = require('fs');
 
 const BadInvestmentAdvice = (() => {
 
+  /* Default filepaths */
+  const componentFilePath = './json/_components.json';
+  const formatFilePath = './json/_formats.json';
+
   /* loadJSON(filepath): Loads the object stored in JSON file located at filepath */
   const _loadJSON = (filepath) => {
     /* Check to ensure file is of type .json */
