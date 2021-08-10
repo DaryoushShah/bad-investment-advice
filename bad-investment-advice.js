@@ -61,7 +61,54 @@ const BadInvestmentAdvice = (() => {
     return null;
   }
 
-  return {
+  /* getFormatComponents(format, components): Based on format, returns an object of randomly selected keys/value pairs from all possible components */
+  const _getFormatComponents = (format, components) => {
+    let selectedComponents = {};
+    /* Loop through the template */
+    for(const part of format.template){
+      if(_parseFormatValue(part) === null){
+        continue;
+      }
+      const component = _parseFormatValue(part).key;
+      /* Check to see if component is defined in _components.json */
+      if(selectedComponents[component] === undefined){
+        selectedComponents[component] = _getRandomElement(_objectToArray(_loadJSON(components[component].filepath)));
+      }
+    }
+    return selectedComponents;
+  }
 
+  /* createMessage(format, components): returns string of message based on format & components */
+  const _createMessage = (format, components) => {
+    let message = '';
+    /* Loop through the template */
+    for(const part of format.template) {
+      const component = _parseFormatValue(part);
+      if(component === null){
+        message += part;
+      }else{
+        /* Check if value key has other objects */
+        if(component.value === undefined){
+          message += components[component.key];
+        }else{
+          message += components[component.key][component.value];
+        }
+      }
+    }
+    return message;
+  }
+
+  /* generateRandomMessage(): generates and retruns a random message */
+  const generateRandomMessage = () => {
+    const format = _getRandomElement(_objectToArray(_loadJSON(formatFilePath)));
+    const listOfComponents = _loadJSON(componentFilePath);
+
+    const components = _getFormatComponents(format, listOfComponents);
+
+    return _createMessage(format, components);
+  }
+
+  return {
+    generateRandomMessage
   }
 })();
