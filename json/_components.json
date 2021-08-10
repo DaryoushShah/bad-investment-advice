@@ -1,7 +1,8 @@
 {
   "company": {
-    "name": "company",
-    "filepath": "./json/companies.json",
-    "structure": ["cik_str", "ticker", "title"]
+    "filepath": "./json/companies.json"
+  },
+  "prediction": {
+    "filepath": "./json/predictions.json"
   }
 }
