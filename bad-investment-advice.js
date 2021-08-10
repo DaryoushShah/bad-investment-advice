@@ -13,6 +13,21 @@ const BadInvestmentAdvice = (() => {
     return JSON.parse(fs.readFileSync(filepath));
   }
 
+  /* objectToArray(object): */
+  const _objectToArray = (object) => {
+    /* Check for null or undefined parameter */
+    if(object === null || object === undefined){
+      console.log("ERROR: Unable to convert null or undefined object to array");
+      return null;
+    }
+    const array = [];
+    /* Loop through and insert all values of object into the array */
+    for(const key in object){
+      array.push(object[key]);
+    }
+    return array;
+  }
+
   return {
 
   }
