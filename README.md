@@ -64,4 +64,4 @@ There are also some reserved components that are used to add functionality such 
 
 | **Name** | **Description** |
 |----------|-----------------|
-NUMBER | generates a random number in the range of [0, 100,000]
+NUMBER | Generates a random number in the range of [0, 100,000]
