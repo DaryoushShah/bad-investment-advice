@@ -6,6 +6,8 @@ const BadInvestmentAdvice = (() => {
   const componentFilePath = './json/_components.json';
   const formatFilePath = './json/_formats.json';
 
+  const MAX_RANDOM_NUMBER = 100000;
+
   /* loadJSON(filepath): Loads the object stored in JSON file located at filepath */
   const _loadJSON = (filepath) => {
     /* Check to ensure file is of type .json */
@@ -72,6 +74,11 @@ const BadInvestmentAdvice = (() => {
       const component = _parseFormatValue(part).key;
       /* Check to see if component is defined in _components.json */
       if(selectedComponents[component] === undefined){
+        /* Check if NUMBER component */
+        if(component === 'NUMBER'){
+          selectedComponents[component] = new Intl.NumberFormat().format(Math.floor(Math.random() * MAX_RANDOM_NUMBER + 1));
+          continue;
+        }
         selectedComponents[component] = _getRandomElement(_objectToArray(_loadJSON(components[component].filepath)));
       }
     }
@@ -112,3 +119,5 @@ const BadInvestmentAdvice = (() => {
     generateRandomMessage
   }
 })();
+
+console.log("\x1b[97m" + BadInvestmentAdvice.generateRandomMessage())
