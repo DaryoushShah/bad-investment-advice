@@ -2,5 +2,9 @@
   "0": {
     "name": "informational",
     "template": ["Have you heard of ", "{{company.title}}", "? You can see it's current price with the ticker symbol $", "{{company.ticker}}", "."]
+  },
+  "1": {
+    "name": "Bad Investment Advice",
+    "template": ["I think that ", "{{company.title}}", ", which trades under ", "{{company.ticker}}", " is going to ", "{{prediction}}", " by ", "{{NUMBER}}", "%."]
   }
 }
